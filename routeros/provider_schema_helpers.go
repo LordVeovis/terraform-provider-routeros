@@ -584,8 +584,12 @@ var (
 
 	ValidationAutoYesNo = validation.StringInSlice([]string{"auto", "yes", "no"}, false)
 	ValidationIpAddress = validation.StringMatch(
-		regexp.MustCompile(`^$|^!?(\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/([0-9]|[0-9]|[1-2][0-9]|3[0-2]))?)$`),
+		regexp.MustCompile(`^$|^!?(\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/([0-9]|[1-2][0-9]|3[0-2]))?)$`),
 		"Allowed addresses should be a CIDR IP address or an empty string",
+	)
+	ValidationIpv6Address = validation.StringMatch(
+		regexp.MustCompile(`^$|^([a-f0-9]{1,4}:){1,7}:?([a-f0-9]{1,4}:)*[a-f0-9]{0,4}(/[0-9]{1,3})?$`),
+		"Allowed addresses should be a CIDR IPv6 address or an empty string",
 	)
 	ValidationMacAddress = validation.StringMatch(
 		regexp.MustCompile(`^!?\b(?:[0-9A-F]{2}\:){5}(?:[0-9A-F]{2})$`),

@@ -49,7 +49,7 @@ func ResourceInterfaceBridgeFilter() *schema.Resource {
 		MetaId:           PropId(Id),
 		MetaSkipFields:   PropSkipFields("bytes", "packets", "invalid"),
 		MetaSetUnsetFields: PropSetUnsetFields("arp_dst_mac_address", "arp_gratuitous", "arp_hardware_type",
-			"arp_opcode", "arp_packet_type", "arp_src_address", "arp_src_mac_address", "dst_address", "dst_mac_address",
+			"arp_opcode", "arp_packet_type", "arp_src_address", "arp_src_mac_address", "dst_address", "dst_address6", "dst_mac_address",
 			"dst_port", "in_bridge", "in_bridge_list", "in_interface", "in_interface_list", "ingress_priority",
 			"ip_protocol", "limit", "mac_protocol", "new_packet_mark", "new_priority", "out_bridge", "out_bridge_list",
 			"out_interface", "out_interface_list", "packet_mark", "packet_type", "src_address", "src_mac_address",
@@ -120,6 +120,12 @@ func ResourceInterfaceBridgeFilter() *schema.Resource {
 			Optional:     true,
 			Description:  "Destination IP address (only if MAC protocol is set to IP).",
 			ValidateFunc: ValidationIpAddress,
+		},
+		"dst_address6": {
+			Type:         schema.TypeString,
+			Optional:     true,
+			Description:  "Destination IPv6 address (only if MAC protocol is set to IPv6).",
+			ValidateFunc: ValidationIpv6Address,
 		},
 		"dst_mac_address": {
 			Type:         schema.TypeString,
