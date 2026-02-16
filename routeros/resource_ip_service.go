@@ -35,7 +35,7 @@ import (
 func ResourceIpService() *schema.Resource {
 	resSchema := map[string]*schema.Schema{
 		MetaResourcePath: PropResourcePath("/ip/service"),
-		MetaId:           PropId(Name),
+		MetaId:           PropId(Id),
 
 		"address": {
 			Type:        schema.TypeString,
@@ -102,7 +102,7 @@ func ResourceIpService() *schema.Resource {
 	resCreateUpdate := func(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 		item, metadata := TerraformResourceDataToMikrotik(resSchema, d)
 
-		d.SetId(d.Get("numbers").(string))
+		//d.SetId(d.Get(".id").())
 
 		var resUrl string
 		if m.(Client).GetTransport() == TransportREST {
