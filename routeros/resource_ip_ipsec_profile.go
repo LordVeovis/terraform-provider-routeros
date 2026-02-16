@@ -93,6 +93,16 @@ func ResourceIpIpsecProfile() *schema.Resource {
 				"with NAT.",
 			DiffSuppressFunc: AlwaysPresentNotUserProvided,
 		},
+		"ppk": {
+			Type:        schema.TypeSet,
+			Optional:    true,
+			Description: "Post-quantum preshared key (IKEv2 only) source",
+			Elem: &schema.Schema{
+				Type:         schema.TypeString,
+				ValidateFunc: validation.StringInSlice([]string{"no", "psk", "psk-ike-initial", "qkd"}, false),
+			},
+			DiffSuppressFunc: AlwaysPresentNotUserProvided,
+		},
 		"prf_algorithm": {
 			Type:         schema.TypeString,
 			Optional:     true,

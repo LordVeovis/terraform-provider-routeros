@@ -60,6 +60,11 @@ func ResourceIpIpsecPeer() *schema.Resource {
 				"also phase2 automatically, if policies are configured or created during the phase1.",
 			DiffSuppressFunc: AlwaysPresentNotUserProvided,
 		},
+		"ppk_secret": {
+			Type:        schema.TypeString,
+			Optional:    true,
+			Description: "Static PPK secret with \"static-ppk-secret\" ID used when no one-time key/psk exist for this peer, ensure the key has 256 bits of entropy",
+		},
 		"port": {
 			Type:     schema.TypeInt,
 			Optional: true,
