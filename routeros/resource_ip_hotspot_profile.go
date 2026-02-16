@@ -30,6 +30,12 @@ func ResourceIpHotspotProfile() *schema.Resource {
 		MetaResourcePath: PropResourcePath("/ip/hotspot/profile"),
 		MetaId:           PropId(Id),
 
+		"default": {
+			Type:             schema.TypeBool,
+			Optional:         true,
+			Description:      "Whether this profile is the default profile.",
+			DiffSuppressFunc: AlwaysPresentNotUserProvided,
+		},
 		"dns_name": {
 			Type:     schema.TypeString,
 			Optional: true,
@@ -83,6 +89,11 @@ func ResourceIpHotspotProfile() *schema.Resource {
 			Description: "Whether to redirect unauthenticated user to hotspot login page, if he is visiting a https:// " +
 				"url. Since certificate domain name will mismatch, often this leads to errors, so you can set this parameter " +
 				"to `no` and all https requests will simply be rejected and user will have to visit a http page.",
+		},
+		"install_hotspot_queue": {
+			Type:        schema.TypeBool,
+			Optional:    true,
+			Description: "Whether the rate limit is enabled for HotSpot users according to the `rate-limit` setting.",
 		},
 		"login_by": {
 			Type:     schema.TypeSet,
