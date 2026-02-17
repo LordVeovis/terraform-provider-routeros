@@ -13,6 +13,7 @@
 
 ### Optional
 
+- `comment` (String)
 - `raw_value` (String) raw_value is computed from value.
 - `value` (String) The dhcp-client option
 

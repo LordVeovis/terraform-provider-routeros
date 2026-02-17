@@ -77,6 +77,7 @@ resource "routeros_move_items" "bridge_filter_rules" {
 - `comment` (String)
 - `disabled` (Boolean)
 - `dst_address` (String) Destination IP address (only if MAC protocol is set to IP).
+- `dst_address6` (String) Destination IPv6 address (only if MAC protocol is set to IPv6).
 - `dst_mac_address` (String) Destination MAC address.
 - `dst_port` (String) List of destination port numbers or port number ranges.
 - `in_bridge` (String) Bridge interface through which the packet is coming in.

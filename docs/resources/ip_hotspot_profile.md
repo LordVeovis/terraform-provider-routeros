@@ -19,6 +19,7 @@ resource "routeros_ip_hotspot_profile" "test" {
 
 ### Optional
 
+- `default` (Boolean) Whether this profile is the default profile.
 - `dns_name` (String) DNS name of the HotSpot server (it appears as the location of the login page). This name will automatically be added as a static DNS entry in the DNS cache. Name can affect if Hotspot is automatically detected by client device. For example, iOS devices may not detect Hotspot that has a name which includes `.local`.
 - `hotspot_address` (String) IP address of HotSpot service.
 - `html_directory` (String) Directory name in which HotSpot HTML pages are stored (by default hotspot directory). It is possible to specify different directory with modified HTML pages. To change HotSpot login page, connect to the router with FTP and download hotspot directory contents. v6.31 and older software builds: For devices where `flash` directory is present, hotspot html directory must be stored there and path must be typed in as follows: `/(hotspot_dir)`. This must be done in this order as hotspot sees `flash` directory as root location. v6.32 and newer software builds: full path must be typed in html-directory field, including `/flash/(hotspot_dir)`.
@@ -26,6 +27,7 @@ resource "routeros_ip_hotspot_profile" "test" {
 - `http_cookie_lifetime` (String) HTTP cookie validity time, the option is related to cookie HotSpot login method.
 - `http_proxy` (String) Address and port of the proxy server for HotSpot service, when default value is used all request are resolved by the local `/ip proxy`.
 - `https_redirect` (Boolean) Whether to redirect unauthenticated user to hotspot login page, if he is visiting a https:// url. Since certificate domain name will mismatch, often this leads to errors, so you can set this parameter to `no` and all https requests will simply be rejected and user will have to visit a http page.
+- `install_hotspot_queue` (Boolean) Whether the rate limit is enabled for HotSpot users according to the `rate-limit` setting.
 - `login_by` (Set of String) Used HotSpot authentication method
  * mac-cookie - enables login by mac cookie method.
  * cookie - may only be used with other HTTP authentication method. HTTP cookie is generated, when user authenticates in HotSpot for the first time. User is not asked for the login/password and authenticated automatically, until cookie-lifetime is active.

@@ -26,6 +26,7 @@ Read-Only:
 - `actual_interface` (String)
 - `address` (String)
 - `advertise` (Boolean)
+- `auto_link_local` (Boolean)
 - `comment` (String)
 - `deprecated` (Boolean)
 - `disabled` (Boolean)
@@ -38,5 +39,6 @@ Read-Only:
 - `link_local` (Boolean)
 - `no_dad` (Boolean)
 - `slave` (Boolean)
+- `vrf` (String)
 
 
